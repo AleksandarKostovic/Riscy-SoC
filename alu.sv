@@ -30,10 +30,8 @@ module alu (
     input [63:0] rs2_value_in,
     input [63:0] imm_value_in,
 
-    /* control out */
     output logic non_zero_out,
 
-    /* data out */
     output logic [63:0] result_out
 );
     logic [63:0] src1;
