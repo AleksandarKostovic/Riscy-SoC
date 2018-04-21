@@ -1,11 +1,11 @@
 `ifndef CPU
 `define CPU
 
-`include "cpu_decode.sv"
-`include "cpu_execute.sv"
-`include "cpu_fetch.sv"
-`include "cpu_hazard.sv"
-`include "cpu_mem.sv"
+`include "decode.sv"
+`include "execute.sv"
+`include "fetch.sv"
+`include "hazard.sv"
+`include "mem.sv"
 
 module cpu (
     input clk,
