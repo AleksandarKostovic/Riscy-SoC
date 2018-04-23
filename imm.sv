@@ -9,7 +9,7 @@
 `define IMM_SHAMT 6'b101101
 `define IMM_ZIMM  6'b110110
 
-module _imm_mux (
+module imm_mux (
     input [4:0] imm_in,
 
     input [63:0] instr_in,
