@@ -110,7 +110,6 @@ module mem (
             data_write_mask_out = 8'b0;
         end
 
-        /* read port */
         if (read_in) begin
             case (width_in)
                 `MEM_WIDTH_WORD: begin
