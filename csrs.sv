@@ -139,7 +139,7 @@
 `define SR_SRC_IMM 1'b0
 `define CSR_SRC_REG 1'b1
 
-                     /* | XLEN|    |ABCDEFGHIJKLMNOPQRSTUVWXYZ | */
+                    
 `define MISA_VALUE 64'b0101_00000000_0000000010000000000000000000000000100000000000000000
 
 module _csrs (
