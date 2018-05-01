@@ -44,7 +44,7 @@ module control_unit (
         csr_write_out = 0;
         csr_write_op_out = 4'bx;
         csr_src_out = 2'bx;
-        branch_op_out = `BRANCH_OP_NEVER;
+        branch_op_out = 0;
         branch_pc_src_out = 2'bx;
         rd_write_out = 0;
     end
