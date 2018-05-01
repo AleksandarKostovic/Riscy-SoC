@@ -161,7 +161,7 @@ module execute (
                 valid_out <= 0;
                 mem_read_out <= 0;
                 mem_write_out <= 0;
-                branch_op_out <= `BRANCH_OP_NEVER;
+                branch_op_out <= 0;
                 rd_write_out <= 0;
             end
         end
