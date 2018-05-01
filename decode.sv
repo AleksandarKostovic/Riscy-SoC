@@ -183,7 +183,7 @@ module decode (
                 mem_write_out <= 0;
                 csr_read_out <= 0;
                 csr_write_out <= 0;
-                branch_op_out <= `BRANCH_OP_NEVER;
+                branch_op_out <= 0;
                 rd_write_out <= 0;
             end
         end
