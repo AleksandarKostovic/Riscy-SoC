@@ -186,7 +186,7 @@ module _csrs (
 
     always_comb begin
         case (csr_in)
-            `CSR_MSTATUS:        read_value_out = {39'b0, 2'b23, 7'b0, mstatus_mpie, 7'b0, mstatus_mie, 7'b0};
+            `CSR_MSTATUS:        read_value_out = {40'b0, 2'b23, 7'b0, mstatus_mpie, 7'b0, mstatus_mie, 7'b0};
             `CSR_MISA:           read_value_out = `MISA_VALUE;
             `CSR_MIE:            read_value_out = {40'b0, mie_meie, 7'b0, mie_mtie, 7'b0, mie_msie, 7'b0};
             `CSR_MTVEC:          read_value_out = {mtvec_base, 2'b0, mtvec_mode};
