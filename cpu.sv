@@ -23,7 +23,7 @@ module cpu (
     output logic [63:0] data_write_value_out,
     input data_ready_in,
 
-    output logic [127:0] cycle_out
+    output logic [63:0] cycle_out
 );
     logic fetch_stall;
     logic fetch_flush;
