@@ -2,7 +2,7 @@ module sp_ram (
   input [5:0] addr,
   input [7:0] data,
   input we,clk,
-  output [7:0] q
+  output [7:0] y
 );
   reg [5:0] addr_reg;
   reg [7:0] ram [63:0];
@@ -13,5 +13,5 @@ module sp_ram (
       addr_reg <= addr;
   end
   
-  assign q = ram[addr_reg];
+  assign y = ram[addr_reg];
 endmodule   
