@@ -74,7 +74,7 @@ module alu (
     assign shamt = src2[8:0];
 
     assign add_sub = sub_sra_in ? src1 - src2 : src1 + src2;
-    assign srl_sra = $signed({sub_sra_in ? src1_sign : 2'b00, src1}) >>> shamt;
+    assign srl_sra = $signed({sub_sra_in ? src1_sign : 2'b0, src1}) >>> shamt;
 
     assign carry = add_sub[64];
     assign sign  = add_sub[63];
