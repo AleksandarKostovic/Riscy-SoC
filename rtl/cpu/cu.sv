@@ -49,5 +49,3 @@ module control_unit (
         rd_write_out = 0;
     end
 endmodule
-
-`endif
