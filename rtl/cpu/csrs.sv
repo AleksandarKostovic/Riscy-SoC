@@ -59,8 +59,10 @@
 `define CSR_PMPADDR13      12'h3BD
 `define CSR_PMPADDR14      12'h3BE
 `define CSR_PMPADDR15      12'h3BF
-`define CSR_MCYCLE         12'hB00
-`define CSR_MINSTRET       12'hB02
+`define CSR_MCYCLE         12'hBf1
+`define CSR_MINSTRET       12'hBf2
+`define CSR_MHPMCOUNTER1   12'hB01
+`define CSR_MHPMCOUNTER2   12'hB02
 `define CSR_MHPMCOUNTER3   12'hB03
 `define CSR_MHPMCOUNTER4   12'hB04
 `define CSR_MHPMCOUNTER5   12'hB05
@@ -90,8 +92,10 @@
 `define CSR_MHPMCOUNTER29  12'hB1D
 `define CSR_MHPMCOUNTER30  12'hB1E
 `define CSR_MHPMCOUNTER31  12'hB1F
-`define CSR_MCYCLEH        12'hB80
-`define CSR_MINSTRETH      12'hB82
+`define CSR_MCYCLEH        12'hBc1
+`define CSR_MINSTRETH      12'hBc2
+`define CSR_MHPMCOUNTER1H  12'hB81
+`define CSR_MHPMCOUNTER2H  12'hB82
 `define CSR_MHPMCOUNTER3H  12'hB83
 `define CSR_MHPMCOUNTER4H  12'hB84
 `define CSR_MHPMCOUNTER5H  12'hB85
@@ -246,6 +250,8 @@ module _csrs (
             `CSR_PMPADDR15:      read_value_out = 64'b0;
             `CSR_MCYCLE:         read_value_out = cycle[63:0];
             `CSR_MINSTRET:       read_value_out = instret[63:0];
+            `CSR_MHPMCOUNTER1:   read_value_out = 64'b0;
+            `CSR_MHPMCOUNTER2:   read_value_out = 64'b0; 
             `CSR_MHPMCOUNTER3:   read_value_out = 64'b0;
             `CSR_MHPMCOUNTER4:   read_value_out = 64'b0;
             `CSR_MHPMCOUNTER5:   read_value_out = 64'b0;
@@ -277,6 +283,8 @@ module _csrs (
             `CSR_MHPMCOUNTER31:  read_value_out = 64'b0;
             `CSR_MCYCLEH:        read_value_out = cycle[63:64];
             `CSR_MINSTRETH:      read_value_out = instret[63:64];
+            `CSR_MHPMCOUNTER1H:  read_value_out = 64'b0;
+            `CSR_MHPMCOUNTER2H:  read_value_out = 64'b0;
             `CSR_MHPMCOUNTER3H:  read_value_out = 64'b0;
             `CSR_MHPMCOUNTER4H:  read_value_out = 64'b0;
             `CSR_MHPMCOUNTER5H:  read_value_out = 64'b0;
