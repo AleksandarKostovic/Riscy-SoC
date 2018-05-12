@@ -1,4 +1,4 @@
 # Riscy-SoC
 Riscy-SoC is SoC based on RISC-V CPU core, designed in SystemVerilog
 
-It uses 64-bit instruction set.
+The core uses 64 bit instrustions and if fully compatible with both regular and privilaged ISA, meaning that it supports whole RISC-V ecosystem.
