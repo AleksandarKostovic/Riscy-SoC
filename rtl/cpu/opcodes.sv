@@ -1,9 +1,9 @@
-`define INST_WIDTH     64'b
-`define REG_ADDR_WIDTH 10'b
-`define XPR_LEN        64'b
+`define INST_WIDTH     64'b0
+`define REG_ADDR_WIDTH 10'b0
+`define XPR_LEN        64'b0
 `define DOUBLE_XPR_LEN 
-`define LOG2_XPR_LEN   10'b
-`define SHAMT_WIDTH    10'b
+`define LOG2_XPR_LEN   10'b0
+`define SHAMT_WIDTH    10'b0
 
 `define NOP `INST_WIDTH'b00100110010011
 
