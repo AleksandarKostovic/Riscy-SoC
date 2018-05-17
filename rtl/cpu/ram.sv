@@ -1,4 +1,4 @@
-module single_port_ram (
+module sp_ram (
   input [5:0] addr,
   input [7:0] data,
   input we,clk,
