@@ -4,9 +4,9 @@ module sp_ram (
   input we,clk,
   output [7:0] y
 );
+	reg [7:0] ram[63:0];
   reg [5:0] addr_reg;
-  reg [7:0] ram [63:0];
-  always_ff (posedge clk)
+  always @ (posedge clk)
   begin  
     if (we)
       ram[addr] <= data;
