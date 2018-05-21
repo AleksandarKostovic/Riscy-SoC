@@ -1,12 +1,4 @@
 `define INST_WIDTH     64'b0
-`define REG_ADDR_WIDTH 10'b0
-`define XPR_LEN        64'b0
-`define DOUBLE_XPR_LEN 
-`define LOG2_XPR_LEN   10'b0
-`define SHAMT_WIDTH    10'b0
-
-`define NOP `INST_WIDTH'b00100110010011
-
 
 `define LOAD     7'b0000011
 `define STORE    7'b0100011
@@ -85,3 +77,5 @@
 `define FUNCT3_DIVU   3'd5
 `define FUNCT3_REM    3'd6
 `define FUNCT3_REMU   3'd7
+
+`endif
