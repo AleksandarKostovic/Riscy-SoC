@@ -19,51 +19,37 @@
 `define SYSTEM   7'b1110011
 `define AUIPC    7'b0010111
 `define LUI      7'b0110111
+`define OP_SYS   7'b1111011
 
-`define FUNCT3_ADD_SUB 0
-`define FUNCT3_SLL     1
-`define FUNCT3_SLT     2
-`define FUNCT3_SLTU    3
-`define FUNCT3_XOR     4
-`define FUNCT3_SRA_SRL 5
-`define FUNCT3_OR      6
-`define FUNCT3_AND     7
+`define F3_ADD	  3'b000
+`define F3_SLL		3'b001
+`define F3_SLT		3'b010
+`define F3_SLTU		3'b011
+`define F3_XOR		3'b100
+`define F3_SR		  3'b101
+`define F3_OR		  3'b110
+`define F3_AND		3'b111
 
+`define F3_BEQ		3'b000
+`define F3_BNE		3'b001
+`define F3_BLT		3'b100
+`define F3_BGE		3'b101
+`define F3_BLTU		3'b110
+`define F3_BGEU		3'b111
 
-`define FUNCT3_BEQ  0
-`define FUNCT3_BNE  1
-`define FUNCT3_BLT  4
-`define FUNCT3_BGE  5
-`define FUNCT3_BLTU 6
-`define FUNCT3_BGEU 7
+`define F3_LB		3'b000
+`define F3_LH		3'b001 
+`define F3_LW		3'b010 
+`define F3_LBU	3'b100 
+`define F3_LHU	3'b101 
 
-`define FUNCT3_FENCE   0
-`define FUNCT3_FENCE_I 1
+`define F3_SB		3'b000 
+`define F3_SH		3'b001 
+`define F3_SW		3'b010 
 
-
-`define FUNCT3_PRIV   0
-`define FUNCT3_CSRRW  1
-`define FUNCT3_CSRRS  2
-`define FUNCT3_CSRRC  3
-`define FUNCT3_CSRRWI 5
-`define FUNCT3_CSRRSI 6
-`define FUNCT3_CSRRCI 7
-
-
-`define FUNCT12_ECALL  12'b000000000000
-`define FUNCT12_EBREAK 12'b000000000001
-`define FUNCT12_ERET   12'b000100000000
-`define FUNCT12_WFI    12'b000100000010
-
-`define FUNCT7_MUL_DIV 7'd1
-
-`define FUNCT3_MUL    3'd0
-`define FUNCT3_MULH   3'd1
-`define FUNCT3_MULHSU 3'd2
-`define FUNCT3_MULHU  3'd3
-`define FUNCT3_DIV    3'd4
-`define FUNCT3_DIVU   3'd5
-`define FUNCT3_REM    3'd6
-`define FUNCT3_REMU   3'd7
+`define F12_ECALL  12'b000000000000
+`define F12_EBREAK 12'b000000000001
+`define F2_ERET   12'b000100000000
+`define F12_WFI    12'b000100000010
 
 `endif
