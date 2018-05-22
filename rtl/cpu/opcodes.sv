@@ -53,7 +53,7 @@
 `define ALU_SLTU	    4'd3
 `define ALU_XOR		    4'd4
 `define ALU_SRL		    4'd5
-`define ALU_SRA         4'd6
+`define ALU_SRA       4'd6
 `define ALU_OR		    4'd7
 `define ALU_AND		    4'd8
 `define ALU_LUI		    4'd9
@@ -66,7 +66,7 @@
 
 `define F12_ECALL   12'b000000000000
 `define F12_EBREAK  12'b000000000001
-`define F2_ERET     12'b000100000000
+`define F12_ERET     12'b000100000000
 `define F12_WFI     12'b000100000010
 
 `endif
