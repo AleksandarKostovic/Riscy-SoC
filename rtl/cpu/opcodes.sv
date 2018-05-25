@@ -21,31 +21,31 @@
 `define LUI      7'b0110111
 `define OP_SYS   7'b1111011
 
-`define F3_ADD	   3'b000
-`define F3_SLL		 3'b001
-`define F3_SLT		 3'b010
-`define F3_SLTU		 3'b011
-`define F3_XOR		 3'b100
-`define F3_SR		   3'b101
-`define F3_OR		   3'b110
-`define F3_AND		 3'b111
+`define F3_ADD  3'b000
+`define F3_SLL  3'b001
+`define F3_SLT  3'b010
+`define F3_SLTU 3'b011
+`define F3_XOR  3'b100
+`define F3_SR   3'b101
+`define F3_OR   3'b110
+`define F3_AND  3'b111
 
-`define F3_BEQ		 3'b000
-`define F3_BNE		 3'b001
-`define F3_BLT		 3'b100
-`define F3_BGE		 3'b101
-`define F3_BLTU		 3'b110
-`define F3_BGEU		 3'b111
+`define F3_BEQ  3'b000
+`define F3_BNE  3'b001
+`define F3_BLT  3'b100
+`define F3_BGE  3'b101
+`define F3_BLTU 3'b110
+`define F3_BGEU 3'b111
 
-`define F3_LB		   3'b000
-`define F3_LH		   3'b001 
-`define F3_LW		   3'b010 
-`define F3_LBU	   3'b100 
-`define F3_LHU	   3'b101 
+`define F3_LB  3'b000
+`define F3_LH  3'b001 
+`define F3_LW  3'b010 
+`define F3_LBU 3'b100 
+`define F3_LHU 3'b101 
 
-`define F3_SB		3'b000 
-`define F3_SH		3'b001 
-`define F3_SW		3'b010 
+`define F3_SB 3'b000 
+`define F3_SH 3'b001 
+`define F3_SW 3'b010 
 
 `define ALU_ADD  4'd0
 `define ALU_SLL  4'd1
@@ -66,7 +66,7 @@
 
 `define F12_ECALL   12'b000000000000
 `define F12_EBREAK  12'b000000000001
-`define F12_ERET     12'b000100000000
+`define F12_ERET    12'b000100000000
 `define F12_WFI     12'b000100000010
 
 `endif
