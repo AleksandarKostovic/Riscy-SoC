@@ -13,7 +13,6 @@
 `define ALU_SRC1_REG  4'b0000
 `define ALU_SRC1_PC   4'b0101
 `define ALU_SRC1_ZERO 4'b1010
-
 `define ALU_SRC2_REG  4'b0000
 `define ALU_SRC2_IMM  4'b0101
 `define ALU_SRC2_FOUR 4'b1010
