@@ -34,23 +34,23 @@ module alu (
 
     output [63:0] result_out
 );
-    wire [63:0] src1;
-    wire [63:0] src2;
+    reg [63:0] src1;
+    reg [63:0] src2;
 
-    wire src1_sign;
-    wire src2_sign;
+    reg src1_sign;
+    reg src2_sign;
 
-    wire [8:0] shamt;
+    reg [8:0] shamt;
 
-    wire [64:0] add_sub;
-    wire [63:0] srl_sra;
+    reg [64:0] add_sub;
+    reg [63:0] srl_sra;
 
-    wire carry;
-    wire sign;
-    wire ovf;
+    reg carry;
+    reg sign;
+    reg ovf;
 
-    wire lt;
-    wire ltu;
+    reg lt;
+    reg ltu;
 
     always@(*) begin
         case (src1_in)
