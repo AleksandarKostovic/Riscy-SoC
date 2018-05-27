@@ -30,20 +30,20 @@ module mem (
 
     input [63:0] data_read_value_in,
 
-    output logic valid_out,
-    output logic branch_mispredicted_out,
-    output logic [8:0] rd_out,
-    output logic rd_write_out,
+    output valid_out,
+    output branch_mispredicted_out,
+    output [8:0] rd_out,
+    output rd_write_out,
 
-    output logic data_read_out,
-    output logic data_write_out,
-    output logic [7:0] data_write_mask_out,
+    output data_read_out,
+    output data_write_out,
+    output [7:0] data_write_mask_out,
 
-    output logic [63:0] rd_value_out,
-    output logic [63:0] branch_pc_out,
+    output [63:0] rd_value_out,
+    output [63:0] branch_pc_out,
 
-    output logic [63:0] data_address_out,
-    output logic [63:0] data_write_value_out
+    output [63:0] data_address_out,
+    output [63:0] data_write_value_out
 );
     branch_unit branch_unit (
         .predicted_taken_in(branch_predicted_taken_in),
@@ -55,13 +55,13 @@ module mem (
 
     assign branch_pc_out = branch_pc_in;
 
-    logic [63:0] mem_read_value;
+    reg [63:0] mem_read_value;
 
     assign data_read_out = read_in;
     assign data_write_out = write_in;
     assign data_address_out = result_in;
 
-    always_comb begin
+    always@(*) begin
         if (write_in) begin
             case (width_in)
                 `MEM_WIDTH_WORD: begin
@@ -138,7 +138,7 @@ module mem (
         end
     end
 
-    always_ff @(posedge clk) begin
+    always@(posedge clk) begin
         if (!stall_in) begin
             valid_out <= valid_in;
             rd_out <= rd_in;
