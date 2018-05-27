@@ -25,6 +25,7 @@ module control_unit (
     output [2:0] branch_op_out,
     output [2:0] branch_pc_src_out,
     output rd_write_out );
+   
     always@(*) begin
         valid_out = 0;
         rs1_read_out = 0;
