@@ -12,10 +12,10 @@ module regs (
 
     input [63:0] rd_value_in,
 
-    output logic [63:0] rs1_value_out,
-    output logic [63:0] rs2_value_out
+    output [63:0] rs1_value_out,
+    output [63:0] rs2_value_out
 );
-    logic [63:0] regs [63:0];
+    reg [63:0] regs [63:0];
 
     generate
         genvar i;
@@ -25,7 +25,7 @@ module regs (
         end
     endgenerate
 
-    always_ff @(posedge clk) begin
+    always@(posedge clk) begin
         if (!stall_in) begin
             rs1_value_out <= regs[rs1_in];
             rs2_value_out <= regs[rs2_in];
