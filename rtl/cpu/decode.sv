@@ -1,8 +1,8 @@
 `ifndef DECODE
 `define DECODE
 
-`include "control.sv"
-`include "regs.sv"
+`include "cu.v"
+`include "regs.v"
 
 module decode (
     input clk,
