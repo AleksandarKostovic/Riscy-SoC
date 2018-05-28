@@ -7,7 +7,7 @@ module sp_ram (
   
   reg [7:0] ram[63:0];
   reg [5:0] addr_reg;
-  always @ (posedge clk)
+  always_ff @(posedge clk)
   begin  
     if (we)
       ram[addr] <= data;
