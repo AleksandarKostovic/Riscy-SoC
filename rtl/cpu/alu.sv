@@ -13,7 +13,6 @@
 `define ALU_SRC1_REG  4'b0000
 `define ALU_SRC1_PC   4'b0101
 `define ALU_SRC1_ZERO 4'b1010
-
 `define ALU_SRC2_REG  4'b0000
 `define ALU_SRC2_IMM  4'b0101
 `define ALU_SRC2_FOUR 4'b1010
@@ -30,29 +29,29 @@ module alu (
     input [63:0] rs2_value_in,
     input [63:0] imm_value_in,
 
-    output non_zero_out,
+    output logic non_zero_out,
 
-    output [63:0] result_out
+    output logic [63:0] result_out
 );
-    reg [63:0] src1;
-    reg [63:0] src2;
+    logic [63:0] src1;
+    logic [63:0] src2;
 
-    reg src1_sign;
-    reg src2_sign;
+    logic src1_sign;
+    logic src2_sign;
 
-    reg [8:0] shamt;
+    logic [8:0] shamt;
 
-    reg [64:0] add_sub;
-    reg [63:0] srl_sra;
+    logic [64:0] add_sub;
+    logic [63:0] srl_sra;
 
-    reg carry;
-    reg sign;
-    reg ovf;
+    logic carry;
+    logic sign;
+    logic ovf;
 
-    reg lt;
-    reg ltu;
+    logic lt;
+    logic ltu;
 
-    always@(*) begin
+    always_comb begin
         case (src1_in)
             `ALU_SRC1_REG:  src1 = rs1_value_in;
             `ALU_SRC1_PC:   src1 = pc_in;
@@ -74,7 +73,7 @@ module alu (
     assign shamt = src2[8:0];
 
     assign add_sub = sub_sra_in ? src1 - src2 : src1 + src2;
-    assign srl_sra = $signed({sub_sra_in ? src1_sign : 2'b00, src1}) >>> shamt;
+    assign srl_sra = $signed({sub_sra_in ? src1_sign : 2'b0, src1}) >>> shamt;
 
     assign carry = add_sub[64];
     assign sign  = add_sub[63];
@@ -83,7 +82,7 @@ module alu (
     assign lt  = sign != ovf;
     assign ltu = carry;
 
-    always@(*) begin
+    always_comb begin
         case (op_in)
             `ALU_OP_ADD_SUB: result_out = add_sub[63:0];
             `ALU_OP_XOR:     result_out = src1 ^ src2;
