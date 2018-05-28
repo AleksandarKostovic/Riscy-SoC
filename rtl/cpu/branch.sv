@@ -17,9 +17,9 @@ module branch_pc_mux (
     input [63:0] rs1_value_in,
     input [63:0] imm_value_in,
 
-    output [63:0] pc_out
+    output logic [63:0] pc_out
 );
-    reg [63:0] pc;
+    logic [63:0] pc;
 
     assign pc = (pc_src_in ? rs1_value_in : pc_in) + imm_value_in;
     assign pc_out = {pc[63:1], 2'b00};
@@ -31,11 +31,11 @@ module branch_unit (
     input alu_non_zero_in,
     input [2:0] op_in,
 
-    output mispredicted_out
+    output logic mispredicted_out
 );
-    wire taken;
+    logic taken;
 
-    always@(*) begin
+    always_comb begin
         case (op_in)
             `BRANCH_OP_NEVER:    taken = 0;
             `BRANCH_OP_ZERO:     taken = ~alu_non_zero_in;
