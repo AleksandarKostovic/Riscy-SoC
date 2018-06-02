@@ -1,12 +1,12 @@
 module vga(
-    input logic i_clk,
-    input logic i_pix_stb,
-    output logic o_hs,
-    output logic o_vs,
-    output logic o_blanking,
-    output logic o_animate,
-    output logic [9:0] o_x,
-    output logic [8:0] o_y 
+    input logic clk,
+    input logic pix_stb,
+    output logic hs,
+    output logic vs,
+    output logic blanking,
+    output logic animate,
+    output logic [9:0] x,
+    output logic [8:0] y 
     );
 
     localparam logic HS_STA = 16;
@@ -21,19 +21,19 @@ module vga(
     logic [9:0] h_count = 0;  
     logic [9:0] v_count = 0;  
 
-    assign o_hs = ~((h_count >= HS_STA) & (h_count < HS_END));
-    assign o_vs = ~((v_count >= VS_STA) & (v_count < VS_END));
+    assign hs = ~((h_count >= HS_STA) & (h_count < HS_END));
+    assign vs = ~((v_count >= VS_STA) & (v_count < VS_END));
 
-    assign o_x = (h_count < HA_STA) ? 0 : (h_count - HA_STA);
-    assign o_y = (v_count >= VA_END) ? (VA_END - 1) : (v_count);
+    assign x = (h_count < HA_STA) ? 0 : (h_count - HA_STA);
+    assign y = (v_count >= VA_END) ? (VA_END - 1) : (v_count);
 
-    assign o_blanking = ((h_count < HA_STA) | (v_count > VA_END - 1));
+    assign blanking = ((h_count < HA_STA) | (v_count > VA_END - 1));
 
-    assign o_animate = ((v_count == VA_END - 1) & (h_count == LINE));
+    assign animate = ((v_count == VA_END - 1) & (h_count == LINE));
 
-    always_ff @ (posedge i_clk)
+    always_ff @ (posedge clk)
     begin
-        if (i_pix_stb)  
+        if (pix_stb)  
         begin
             if (h_count == LINE) 
             begin
