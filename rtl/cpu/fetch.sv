@@ -34,11 +34,11 @@ module fetch (
 
     always_comb begin
         case ({opcode, sign})
-            {`OPCODE_JAL, 1'bx}: begin
+            {`JAL, 1'bx}: begin
                 branch_predicted_taken = 1;
                 branch_offset = imm_j;
             end
-            {`OPCODE_BRANCH, 1'b1}: begin
+            {`BRANCH, 1'b1}: begin
                 branch_predicted_taken = 1;
                 branch_offset = imm_b;
             end
