@@ -1,3 +1,5 @@
+`include "opcodes.sv"
+
 module fetch (
     input clk,
     input stall_in,
@@ -28,8 +30,8 @@ module fetch (
     assign instr_address_out = pc;
 
     assign sign = instr_read_value_in[63];
-    assign imm_j = {{24{sign}}, instr_read_value_in[39:24], instr_read_value_in[40],    instr_read_value_in[60:50], instr_read_value_in[48:42], 1'b0};
-    assign imm_b = {{40{sign}}, instr_read_value_in[7],     instr_read_value_in[60:50], instr_read_value_in[23:16],  1'b0};
+    assign imm_j = {{24{sign}}, instr_read_value_in[40:24], instr_read_value_in[40],    instr_read_value_in[60:50], instr_read_value_in[48:42], 1'b0};
+    assign imm_b = {{40{sign}}, instr_read_value_in[7],     instr_read_value_in[60:50], instr_read_value_in[24:16],  1'b0};
     assign opcode = instr_read_value_in[7:0];
 
     always_comb begin
