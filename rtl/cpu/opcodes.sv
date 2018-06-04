@@ -7,6 +7,7 @@
 `define LOAD_FP  7'b0000111
 `define STORE_FP 7'b0100111 
 `define MSUB     7'b1000111
+`define NOP      7'b0010011
 `define JALR     7'b1100111
 `define NMSUB    7'b1001011
 `define MISC_MEM 7'b0001111
