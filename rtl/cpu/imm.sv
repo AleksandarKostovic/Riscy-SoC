@@ -30,8 +30,8 @@ module imm_mux (
     assign sign = instr_in[63];
 
     assign imm_i = {{42{sign}}, instr_in[60:50], instr_in[48:42], instr_in[40]};
-    assign imm_s = {{42{sign}}, instr_in[60:50], instr_in[22:16],  instr_in[15]};
-    assign imm_b = {{40{sign}}, instr_in[7],     instr_in[60:50], instr_in[22:15],  2'b0};
+    assign imm_s = {{42{sign}}, instr_in[60:50], instr_in[22:16],  instr_in[16]};
+    assign imm_b = {{40{sign}}, instr_in[7],     instr_in[60:50], instr_in[22:16],  2'b0};
     assign imm_u = {sign,       instr_in[60:40], instr_in[39:12], 24'b0};
     assign imm_j = {{24{sign}}, instr_in[40:24], instr_in[40],    instr_in[60:50], instr_in[48:47], 2'b0};
 
