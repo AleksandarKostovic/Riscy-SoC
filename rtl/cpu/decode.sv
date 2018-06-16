@@ -1,7 +1,7 @@
 `ifndef DECODE
 `define DECODE
 
-`include "control.sv"
+`include "cu.sv"
 `include "regs.sv"
 
 module decode (
