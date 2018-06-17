@@ -1,9 +1,9 @@
 module vga(
     input logic clk,
-    input logic pix_stb,
+    input logic pix,
     output logic hs,
     output logic vs,
-    output logic blanking,
+    output logic blink,
     output logic animate,
     output logic [9:0] x,
     output logic [8:0] y 
@@ -27,13 +27,13 @@ module vga(
     assign x = (h_count < HA_STA) ? 0 : (h_count - HA_STA);
     assign y = (v_count >= VA_END) ? (VA_END - 1) : (v_count);
 
-    assign blanking = ((h_count < HA_STA) | (v_count > VA_END - 1));
+    assign blink = ((h_count < HA_STA) | (v_count > VA_END - 1));
 
     assign animate = ((v_count == VA_END - 1) & (h_count == LINE));
 
     always_ff @ (posedge clk)
     begin
-        if (pix_stb)  
+        if (pix)  
         begin
             if (h_count == LINE) 
             begin
