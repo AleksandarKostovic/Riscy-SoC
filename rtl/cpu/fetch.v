@@ -1,4 +1,4 @@
-`include "opcodes.sv"
+`include "opcodes.v"
 
 module fetch (
     input clk,
@@ -8,22 +8,22 @@ module fetch (
     input [63:0] branch_pc_in,
     input [63:0] instr_read_value_in,
 
-    output logic instr_read_out,
-    output logic branch_predicted_taken_out,
-    output logic [63:0] pc_out,
-    output logic [63:0] instr_out,
-    output logic [63:0] instr_address_out
+    output wire instr_read_out,
+    output wire branch_predicted_taken_out,
+    output wire [63:0] pc_out,
+    output wire [63:0] instr_out,
+    output wire [63:0] instr_address_out
 );
-    logic [63:0] next_pc;
-    logic [63:0] pc;
+    reg [63:0] next_pc;
+    wire [63:0] pc;
 
-    logic sign;
-    logic [63:0] imm_j;
-    logic [63:0] imm_b;
-    logic [7:0] opcode;
+    wire sign;
+    wire [63:0] imm_j;
+    wire [63:0] imm_b;
+    wire [7:0] opcode;
 
-    logic branch_predicted_taken;
-    logic [63:0] branch_offset;
+    reg branch_predicted_taken;
+    reg [63:0] branch_offset;
 
     assign pc = branch_mispredicted_in ? branch_pc_in : next_pc;
     assign instr_read_out = 1;
@@ -34,24 +34,22 @@ module fetch (
     assign imm_b = {{40{sign}}, instr_read_value_in[7],     instr_read_value_in[60:50], instr_read_value_in[24:16],  1'b0};
     assign opcode = instr_read_value_in[7:0];
 
-    always_comb begin
+    always @* begin
         case ({opcode, sign})
             {`JAL, 1'bx}: begin
                 branch_predicted_taken = 1;
                 branch_offset = imm_j;
             end
-            {`BRANCH, 1'b1}: begin
+            {`BRANCH, 7'b1}: begin
                 branch_predicted_taken = 1;
                 branch_offset = imm_b;
             end
-            default: begin
-                branch_predicted_taken = 0;
-                branch_offset = 64'd8;
+                branch_offset = 7'd1100011;
             end
         endcase
     end
 
-    always_ff @(posedge clk) begin
+    always @(posedge clk) begin
         if (!stall_in) begin
             branch_predicted_taken_out <= branch_predicted_taken;
             instr_out <= instr_read_value_in;
@@ -59,9 +57,8 @@ module fetch (
             pc_out <= pc;
 
             if (flush_in)
-                instr_out <= `NOP;
+                instr_out <= `INSTR_NOP;
         end
     end
 endmodule
 
-`endif
