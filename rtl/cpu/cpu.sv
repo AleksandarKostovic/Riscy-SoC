@@ -1,106 +1,106 @@
 `ifndef CPU
 `define CPU
 
-`include "decode.sv"
-`include "execute.sv"
-`include "fetch.sv"
-`include "hazard.sv"
-`include "mem.sv"
+`include "decode.v"
+`include "execute.v"
+`include "fetch.v"
+`include "hazard.v"
+`include "mem.v"
 
-module cpu (
+mmodule cpu (
     input clk,
 
-    output logic [63:0] instr_address_out,
-    output logic instr_read_out,
+    output wire [63:0] instr_address_out,
+    output wire instr_read_out,
     input [63:0] instr_read_value_in,
     input instr_ready_in,
 
-    output logic [63:0] data_address_out,
-    output logic data_read_out,
-    output logic data_write_out,
+    output wire [63:0] data_address_out,
+    output wire data_read_out,
+    output wire data_write_out,
     input [63:0] data_read_value_in,
-    output logic [6:0] data_write_mask_out,
-    output logic [63:0] data_write_value_out,
+    output wire [6:0] data_write_mask_out,
+    output wire [63:0] data_write_value_out,
     input data_ready_in,
 
-    output logic [63:0] cycle_out
+    output wire [63:0] cycle_out 
 );
-    logic fetch_stall;
-    logic fetch_flush;
+    reg fetch_stall;
+    reg fetch_flush;
 
-    logic decode_stall;
-    logic decode_flush;
+    reg decode_stall;
+    reg decode_flush;
 
-    logic execute_stall;
-    logic execute_flush;
+    reg execute_stall;
+    reg execute_flush;
 
-    logic mem_stall;
-    logic mem_flush;
+    reg mem_stall;
+    reg mem_flush;
 
-    logic fetch_branch_predicted_taken;
+    reg fetch_branch_predicted_taken;
 
-    logic [63:0] fetch_pc;
-    logic [63:0] fetch_instr;
+    reg [63:0] fetch_pc;
+    reg [63:0] fetch_instr;
 
-    logic [8:0] decode_rs1_unreg;
-    logic decode_rs1_read_unreg;
-    logic [8:0] decode_rs2_unreg;
-    logic decode_rs2_read_unreg;
-    logic decode_mem_fence_unreg;
+    reg [8:0] decode_rs1_unreg;
+    reg decode_rs1_read_unreg;
+    reg [8:0] decode_rs2_unreg;
+    reg decode_rs2_read_unreg;
+    reg decode_mem_fence_unreg;
 
-    logic decode_branch_predicted_taken;
-    logic decode_valid;
-    logic [8:0] decode_rs1;
-    logic [8:0] decode_rs2;
-    logic [4:0] decode_alu_op;
-    logic decode_alu_sub_sra;
-    logic [2:0] decode_alu_src1;
-    logic [2:0] decode_alu_src2;
-    logic decode_mem_read;
-    logic decode_mem_write;
-    logic [2:0] decode_mem_width;
-    logic decode_mem_zero_extend;
-    logic decode_mem_fence;
-    logic decode_csr_read;
-    logic decode_csr_write;
-    logic [2:0] decode_csr_write_op;
-    logic decode_csr_src;
-    logic [2:0] decode_branch_op;
-    logic decode_branch_pc_src;
-    logic [8:0] decode_rd;
-    logic decode_rd_write;
+    reg decode_branch_predicted_taken;
+    reg decode_valid;
+    reg [8:0] decode_rs1;
+    reg [8:0] decode_rs2;
+    reg [4:0] decode_alu_op;
+    reg decode_alu_sub_sra;
+    reg [2:0] decode_alu_src1;
+    reg [2:0] decode_alu_src2;
+    reg decode_mem_read;
+    reg decode_mem_write;
+    reg [2:0] decode_mem_width;
+    reg decode_mem_zero_extend;
+    reg decode_mem_fence;
+    reg decode_csr_read;
+    reg decode_csr_write;
+    reg [2:0] decode_csr_write_op;
+    reg decode_csr_src;
+    reg [2:0] decode_branch_op;
+    reg decode_branch_pc_src;
+    reg [8:0] decode_rd;
+    reg decode_rd_write;
 
-    logic [63:0] decode_pc;
-    logic [63:0] decode_rs1_value;
-    logic [63:0] decode_rs2_value;
-    logic [63:0] decode_imm_value;
-    logic [23:0] decode_csr;
+    reg [63:0] decode_pc;
+    reg [63:0] decode_rs1_value;
+    reg [63:0] decode_rs2_value;
+    reg [63:0] decode_imm_value;
+    reg [23:0] decode_csr;
 
-    logic execute_branch_predicted_taken;
-    logic execute_valid;
-    logic execute_alu_non_zero;
-    logic execute_mem_read;
-    logic execute_mem_write;
-    logic [2:0] execute_mem_width;
-    logic execute_mem_zero_extend;
-    logic execute_mem_fence;
-    logic [2:0] execute_branch_op;
-    logic [8:0] execute_rd;
-    logic execute_rd_write;
+    reg execute_branch_predicted_taken;
+    reg execute_valid;
+    reg execute_alu_non_zero;
+    reg execute_mem_read;
+    reg execute_mem_write;
+    reg [2:0] execute_mem_width;
+    reg execute_mem_zero_extend;
+    reg execute_mem_fence;
+    reg [2:0] execute_branch_op;
+    reg [8:0] execute_rd;
+    reg execute_rd_write;
 
-    logic [63:0] execute_result;
-    logic [63:0] execute_rs2_value;
-    logic [63:0] execute_branch_pc;
+    reg [63:0] execute_result;
+    reg [63:0] execute_rs2_value;
+    reg [63:0] execute_branch_pc;
 
-    logic mem_valid;
-    logic [8:0] mem_rd;
-    logic mem_rd_write;
+    reg mem_valid;
+    reg [8:0] mem_rd;
+    reg mem_rd_write;
 
-    logic mem_branch_mispredicted;
+    reg mem_branch_mispredicted;
 
-    logic [63:0] mem_rd_value;
+    reg [63:0] mem_rd_value;
 
-    logic [63:0] mem_branch_pc;
+    reg [63:0] mem_branch_pc;
 
     cpu_hazard_unit hazard_unit (
 
