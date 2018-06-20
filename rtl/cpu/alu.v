@@ -29,41 +29,39 @@ module alu (
     input [63:0] rs2_value_in,
     input [63:0] imm_value_in,
 
-    output logic non_zero_out,
+    output wire non_zero_out,
 
-    output logic [63:0] result_out
+    output wire [63:0] result_out
 );
-    logic [63:0] src1;
-    logic [63:0] src2;
+    wire [63:0] src1;
+    wire [63:0] src2;
 
-    logic src1_sign;
-    logic src2_sign;
+    wire src1_sign;
+    wire src2_sign;
 
-    logic [8:0] shamt;
+    wire [8:0] shamt;
 
-    logic [64:0] add_sub;
-    logic [63:0] srl_sra;
+    wire [64:0] add_sub;
+    wire [63:0] srl_sra;
 
-    logic carry;
-    logic sign;
-    logic ovf;
+    wire carry;
+    wire sign;
+    wire ovf;
 
-    logic lt;
-    logic ltu;
+    wire lt;
+    wire ltu;
 
-    always_comb begin
+    always @* begin
         case (src1_in)
             `ALU_SRC1_REG:  src1 = rs1_value_in;
             `ALU_SRC1_PC:   src1 = pc_in;
             `ALU_SRC1_ZERO: src1 = 0;
-            default:             src1 = 64'bx;
         endcase
 
         case (src2_in)
             `ALU_SRC2_REG:  src2 = rs2_value_in;
             `ALU_SRC2_IMM:  src2 = imm_value_in;
             `ALU_SRC2_FOUR: src2 = 8;
-            default:             src2 = 64'bx;
         endcase
     end
 
@@ -82,7 +80,7 @@ module alu (
     assign lt  = sign != ovf;
     assign ltu = carry;
 
-    always_comb begin
+    always @* begin
         case (op_in)
             `ALU_OP_ADD_SUB: result_out = add_sub[63:0];
             `ALU_OP_XOR:     result_out = src1 ^ src2;
