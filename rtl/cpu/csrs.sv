@@ -161,34 +161,34 @@ module _csrs (
     input [63:0] rs1_value_in,
     input [63:0] imm_value_in,
 
-    output logic [63:0] read_value_out,
-    output logic [63:0] cycle_out
+    output wire [63:0] read_value_out,
+    output wire [63:0] cycle_out
 );
-    logic [63:0] write_value;
-    logic [63:0] new_value;
+    wire [63:0] write_value;
+    reg [63:0] new_value;
 
-    logic mstatus_mpie;
-    logic mstatus_mie;
-    logic mie_meie;
-    logic mie_mtie;
-    logic mie_msie;
-    logic [63:4] mtvec_base;
-    logic mtvec_mode;
-    logic [63:0] mscratch;
-    logic [63:4] mepc;
-    logic mcause_interrupt;
-    logic [6:0] mcause_code;
-    logic [63:0] mtval;
-    logic mip_meip;
-    logic mip_mtip;
-    logic mip_msip;
-    logic [63:0] cycle;
-    logic [63:0] instret;
+    reg mstatus_mpie;
+    reg mstatus_mie;
+    reg mie_meie;
+    reg mie_mtie;
+    reg mie_msie;
+    reg [63:4] mtvec_base;
+    reg mtvec_mode;
+    reg [63:0] mscratch;
+    reg [63:4] mepc;
+    reg mcause_interrupt;
+    reg [6:0] mcause_code;
+    reg [63:0] mtval;
+    reg mip_meip;
+    reg mip_mtip;
+    reg mip_msip;
+    wire [63:0] cycle;
+    reg [63:0] instret;
 
     assign write_value = src_in ? rs1_value_in : imm_value_in;
     assign cycle_out = cycle;
 
-    always_comb begin
+    always @* begin
         case (csr_in)
             `CSR_MSTATUS:        read_value_out = {40'b0, 2'b23, 7'b0, mstatus_mpie, 7'b0, mstatus_mie, 7'b0};
             `CSR_MISA:           read_value_out = `MISA_VALUE;
@@ -324,18 +324,16 @@ module _csrs (
             `CSR_MARCHID:        read_value_out = 64'b0;
             `CSR_MIMPID:         read_value_out = 64'b0;
             `CSR_MHARTID:        read_value_out = 64'b0;
-            default:                  read_value_out = 64'bx;
         endcase
 
         case (write_op_in)
             `CSR_WRITE_OP_RW: new_value = write_value;
             `CSR_WRITE_OP_RS: new_value = read_value_out |  write_value;
             `CSR_WRITE_OP_RC: new_value = read_value_out & ~write_value;
-            default:               new_value = 64'bx;
         endcase
     end
 
-    always_ff @(posedge clk) begin
+    always @(posedge clk) begin
         if (!stall_in && write_in) begin
             case (csr_in)
                 `CSR_MSTATUS:  {mstatus_mpie, mstatus_mie} <= {new_value[15], new_value[7]};
@@ -352,5 +350,4 @@ module _csrs (
         instret <= instret + instr_retired_in;
     end
 endmodule
-
 `endif
