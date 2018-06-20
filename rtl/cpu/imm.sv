@@ -14,18 +14,18 @@ module imm_mux (
 
     input [63:0] instr_in,
 
-    output logic [63:0] imm_value_out
+    output wire [63:0] imm_value_out
 );
-    logic sign;
+    wire sign;
 
-    logic [63:0] imm_i;
-    logic [63:0] imm_s;
-    logic [63:0] imm_b;
-    logic [63:0] imm_u;
-    logic [63:0] imm_j;
+    wire [63:0] imm_i;
+    wire [63:0] imm_s;
+    wire [63:0] imm_b;
+    wire [63:0] imm_u;
+    wire [63:0] imm_j;
 
-    logic [63:0] shamt;
-    logic [63:0] zimm;
+    wire [63:0] shamt;
+    wire [63:0] zimm;
 
     assign sign = instr_in[63];
 
@@ -38,7 +38,7 @@ module imm_mux (
     assign shamt = {44'bx, instr_in[48:40]};
     assign zimm  = {44'b0, instr_in[38:30]};
 
-    always_comb begin
+    always @* begin
         case (imm_in)
             `IMM_I:     imm_value_out = imm_i;
             `IMM_S:     imm_value_out = imm_s;
@@ -47,7 +47,6 @@ module imm_mux (
             `IMM_J:     imm_value_out = imm_j;
             `IMM_SHAMT: imm_value_out = shamt;
             `IMM_ZIMM:  imm_value_out = zimm;
-            default:         imm_value_out = 64'bx;
         endcase
     end
 endmodule
