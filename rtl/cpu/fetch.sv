@@ -59,7 +59,7 @@ module fetch (
             pc_out <= pc;
 
             if (flush_in)
-                instr_out <= `INSTR_NOP;
+                instr_out <= `NOP;
         end
     end
 endmodule
