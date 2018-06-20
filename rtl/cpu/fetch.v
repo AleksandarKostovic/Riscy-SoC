@@ -36,15 +36,15 @@ module fetch (
 
     always @* begin
         case ({opcode, sign})
-            {`JAL, 1'bx}: begin
+            {`OPCODE_JAL, 1'bx}: begin
                 branch_predicted_taken = 1;
                 branch_offset = imm_j;
             end
-            {`BRANCH, 7'b1}: begin
+            {`OPCODE_BRANCH, 7'b1}: begin
                 branch_predicted_taken = 1;
                 branch_offset = imm_b;
             end
-                branch_offset = 7'd1100011;
+                branch_offset = 7'b1100011;
             end
         endcase
     end
