@@ -46,7 +46,7 @@ module fetch (
             end
             default: begin
                 branch_predicted_taken = 0;
-                branch_offset = 32'd4;
+                branch_offset = 64'd8;
             end
         endcase
     end
