@@ -102,7 +102,7 @@ module execute (
     );
 
     reg [63:0] csr_read_value;
-    reg [127:0] cycle;
+    reg [63:0] cycle;
 
     csrs csrs (
         .clk(clk),
