@@ -1,9 +1,9 @@
 `ifndef EXECUTE
 `define EXECUTE
 
-`include "alu.sv"
-`include "branch.sv"
-`include "csrs.sv"
+`include "alu.v"
+`include "branch.v"
+`include "csrs.v"
 
 module execute (
     input clk,
@@ -45,28 +45,28 @@ module execute (
 
     input [63:0] writeback_rd_value_in,
 
-    output logic branch_predicted_taken_out,
-    output logic valid_out,
-    output logic alu_non_zero_out,
-    output logic mem_read_out,
-    output logic mem_write_out,
-    output logic [2:0] mem_width_out,
-    output logic mem_zero_extend_out,
-    output logic mem_fence_out,
-    output logic [2:0] branch_op_out,
-    output logic [8:0] rd_out,
-    output logic rd_write_out,
+    output wire branch_predicted_taken_out,
+    output wire valid_out,
+    output wire alu_non_zero_out,
+    output wire mem_read_out,
+    output wire mem_write_out,
+    output wire [2:0] mem_width_out,
+    output wire mem_zero_extend_out,
+    output wire mem_fence_out,
+    output wire [2:0] branch_op_out,
+    output wire [8:0] rd_out,
+    output wire rd_write_out,
 
-    output logic [63:0] result_out,
-    output logic [63:0] rs2_value_out,
-    output logic [63:0] branch_pc_out,
+    output wire [63:0] result_out,
+    output wire [63:0] rs2_value_out,
+    output wire [63:0] branch_pc_out,
 
-    output logic [127:0] cycle_out
+    output wire [127:0] cycle_out
 );
-    logic [63:0] rs1_value;
-    logic [63:0] rs2_value;
+    reg [63:0] rs1_value;
+    reg [63:0] rs2_value;
 
-    always_comb begin
+    always @* begin
         if (rd_write_out && rd_out == rs1_in && |rs1_in)
             rs1_value = result_out;
         else if (writeback_rd_write_in && writeback_rd_in == rs1_in && |rs1_in)
@@ -82,8 +82,8 @@ module execute (
             rs2_value = rs2_value_in;
     end
 
-    logic alu_non_zero;
-    logic [63:0] alu_result;
+    reg alu_non_zero;
+    reg [63:0] alu_result;
 
     alu alu (
         .op_in(alu_op_in),
@@ -101,8 +101,8 @@ module execute (
         .result_out(alu_result)
     );
 
-    logic [63:0] csr_read_value;
-    logic [127:0] cycle;
+    reg [63:0] csr_read_value;
+    reg [127:0] cycle;
 
     csrs csrs (
         .clk(clk),
@@ -124,7 +124,7 @@ module execute (
         .cycle_out(cycle_out)
     );
 
-    logic [63:0] branch_pc;
+    reg [63:0] branch_pc;
 
     branch_pc_mux branch_pc_mux (
         .pc_src_in(branch_pc_src_in),
@@ -136,7 +136,7 @@ module execute (
         .pc_out(branch_pc)
     );
 
-    always_ff @(posedge clk) begin
+    always @(posedge clk) begin
         if (!stall_in) begin
             branch_predicted_taken_out <= branch_predicted_taken_in;
             valid_out <= valid_in;
