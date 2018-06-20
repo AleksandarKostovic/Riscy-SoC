@@ -1,8 +1,8 @@
 `ifndef DECODE
 `define DECODE
 
-`include "cu.sv"
-`include "regs.sv"
+`include "cu.v"
+`include "regs.v"
 
 module decode (
     input clk,
@@ -20,43 +20,43 @@ module decode (
 
     input [63:0] rd_value_in,
 
-    output logic [8:0] rs1_unreg_out,
-    output logic rs1_read_unreg_out,
-    output logic [8:0] rs2_unreg_out,
-    output logic rs2_read_unreg_out,
-    output logic mem_fence_unreg_out,
+    output wire [8:0] rs1_unreg_out,
+    output wire rs1_read_unreg_out,
+    output wire [8:0] rs2_unreg_out,
+    output wire rs2_read_unreg_out,
+    output wire mem_fence_unreg_out,
 
-    output logic branch_predicted_taken_out,
-    output logic valid_out,
-    output logic [8:0] rs1_out,
-    output logic [8:0] rs2_out,
-    output logic [4:0] alu_op_out,
-    output logic alu_sub_sra_out,
-    output logic [2:0] alu_src1_out,
-    output logic [2:0] alu_src2_out,
-    output logic mem_read_out,
-    output logic mem_write_out,
-    output logic [2:0] mem_width_out,
-    output logic mem_zero_extend_out,
-    output logic mem_fence_out,
-    output logic csr_read_out,
-    output logic csr_write_out,
-    output logic [2:0] csr_write_op_out,
-    output logic csr_src_out,
-    output logic [2:0] branch_op_out,
-    output logic branch_pc_src_out,
-    output logic [8:0] rd_out,
-    output logic rd_write_out,
+    output wire branch_predicted_taken_out,
+    output wire valid_out,
+    output wire [8:0] rs1_out,
+    output wire [8:0] rs2_out,
+    output wire [4:0] alu_op_out,
+    output wire alu_sub_sra_out,
+    output wire [2:0] alu_src1_out,
+    output wire [2:0] alu_src2_out,
+    output wire mem_read_out,
+    output wire mem_write_out,
+    output wire [2:0] mem_width_out,
+    output wire mem_zero_extend_out,
+    output wire mem_fence_out,
+    output wire csr_read_out,
+    output wire csr_write_out,
+    output wire [2:0] csr_write_op_out,
+    output wire csr_src_out,
+    output wire [2:0] branch_op_out,
+    output wire branch_pc_src_out,
+    output wire [8:0] rd_out,
+    output wire rd_write_out,
 
-    output logic [63:0] pc_out,
-    output logic [63:0] rs1_value_out,
-    output logic [63:0] rs2_value_out,
-    output logic [63:0] imm_value_out,
-    output logic [23:0] csr_out
+    output wire [63:0] pc_out,
+    output wire [63:0] rs1_value_out,
+    output wire [63:0] rs2_value_out,
+    output wire [63:0] imm_value_out,
+    output wire [23:0] csr_out
 );
-    logic [8:0] rs2;
-    logic [8:0] rs1;
-    logic [8:0] rd;
+    wire [8:0] rs2;
+    wire [8:0] rs1;
+    wire [8:0] rd;
 
     assign rs2 = instr_in[48:40];
     assign rs1 = instr_in[39:31];
@@ -80,26 +80,26 @@ module decode (
         .rs2_value_out(rs2_value_out)
     );
 
-    logic valid;
-    logic rs1_read;
-    logic rs2_read;
-    logic [4:0] imm;
-    logic [4:0] alu_op;
-    logic alu_sub_sra;
-    logic [2:0] alu_src1;
-    logic [2:0] alu_src2;
-    logic mem_read;
-    logic mem_write;
-    logic [2:0] mem_width;
-    logic mem_zero_extend;
-    logic mem_fence;
-    logic csr_read;
-    logic csr_write;
-    logic [2:0] csr_write_op;
-    logic csr_src;
-    logic [2:0] branch_op;
-    logic branch_pc_src;
-    logic rd_write;
+    reg valid;
+    wire rs1_read;
+    wire rs2_read;
+    reg [4:0] imm;
+    reg [4:0] alu_op;
+    reg alu_sub_sra;
+    reg [2:0] alu_src1;
+    reg [2:0] alu_src2;
+    reg mem_read;
+    reg mem_write;
+    reg [2:0] mem_width;
+    reg mem_zero_extend;
+    wire mem_fence;
+    reg csr_read;
+    reg csr_write;
+    reg [2:0] csr_write_op;
+    reg csr_src;
+    reg [2:0] branch_op;
+    reg branch_pc_src;
+    reg rd_write;
 
     assign rs1_read_unreg_out = rs1_read;
     assign rs2_read_unreg_out = rs2_read;
@@ -134,7 +134,7 @@ module decode (
         .rd_write_out(rd_write)
     );
 
-    logic [63:0] imm_value;
+    reg [63:0] imm_value;
 
     imm_mux imm_mux (
 
@@ -145,11 +145,11 @@ module decode (
         .imm_value_out(imm_value)
     );
 
-    logic [23:0] csr;
+    wire [23:0] csr;
 
     assign csr = instr_in[63:40];
 
-    always_ff @(posedge clk) begin
+    always @(posedge clk) begin
         if (!stall_in) begin
             branch_predicted_taken_out <= branch_predicted_taken_in;
             valid_out <= valid;
