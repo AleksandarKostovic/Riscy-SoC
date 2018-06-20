@@ -1,7 +1,7 @@
-``ifndef MEM
+`ifndef MEM
 `define MEM
 
-`include "branch.sv"
+`include "branch.v"
 
 `define MEM_WIDTH_WORD 4'b0000
 `define MEM_WIDTH_HALF 4'b0101
@@ -30,20 +30,20 @@ module mem (
 
     input [63:0] data_read_value_in,
 
-    output logic valid_out,
-    output logic branch_mispredicted_out,
-    output logic [8:0] rd_out,
-    output logic rd_write_out,
+    output wire valid_out,
+    output wire branch_mispredicted_out,
+    output wire [8:0] rd_out,
+    output wire rd_write_out,
 
-    output logic data_read_out,
-    output logic data_write_out,
-    output logic [7:0] data_write_mask_out,
+    output wire data_read_out,
+    output wire data_write_out,
+    output wire [7:0] data_write_mask_out,
 
-    output logic [63:0] rd_value_out,
-    output logic [63:0] branch_pc_out,
+    output wire [63:0] rd_value_out,
+    output wire [63:0] branch_pc_out,
 
-    output logic [63:0] data_address_out,
-    output logic [63:0] data_write_value_out
+    output wire [63:0] data_address_out,
+    output wire [63:0] data_write_value_out
 );
     branch_unit branch_unit (
         .predicted_taken_in(branch_predicted_taken_in),
@@ -55,13 +55,13 @@ module mem (
 
     assign branch_pc_out = branch_pc_in;
 
-    logic [63:0] mem_read_value;
+    reg [63:0] mem_read_value;
 
     assign data_read_out = read_in;
     assign data_write_out = write_in;
     assign data_address_out = result_in;
 
-    always_comb begin
+    always @* begin
         if (write_in) begin
             case (width_in)
                 `MEM_WIDTH_WORD: begin
@@ -100,8 +100,6 @@ module mem (
                         end
                     endcase
                 end
-                default: begin
-                    data_write_value_out = 64'bx;
                     data_write_mask_out = 8'bx;
                 end
             endcase
@@ -129,8 +127,6 @@ module mem (
                         4'b1111: mem_read_value = {{48{zero_extend_in ? 2'b00 : data_read_value_in[63]}}, data_read_value_in[63:48]};
                     endcase
                 end
-                default: begin
-                    mem_read_value = 64'bx;
                 end
             endcase
         end else begin
@@ -138,7 +134,7 @@ module mem (
         end
     end
 
-    always_ff @(posedge clk) begin
+    always @(posedge clk) begin
         if (!stall_in) begin
             valid_out <= valid_in;
             rd_out <= rd_in;
