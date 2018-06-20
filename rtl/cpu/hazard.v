@@ -25,24 +25,24 @@ module hazard_unit (
     input data_write_in,
     input data_ready_in,
 
-    output logic fetch_stall_out,
-    output logic fetch_flush_out,
+    output wire fetch_stall_out,
+    output wire fetch_flush_out,
 
-    output logic decode_stall_out,
-    output logic decode_flush_out,
+    output wire decode_stall_out,
+    output wire decode_flush_out,
 
-    output logic execute_stall_out,
-    output logic execute_flush_out,
+    output wire execute_stall_out,
+    output wire execute_flush_out,
 
-    output logic mem_stall_out,
-    output logic mem_flush_out
+    output wire mem_stall_out,
+    output wire mem_flush_out
 );
-    logic rs1_matches;
-    logic rs2_matches;
-    logic fetch_wait_for_bus;
-    logic fetch_wait_for_mem_read;
-    logic fetch_wait_for_mem_fence;
-    logic mem_wait_for_bus;
+    wire rs1_matches;
+    wire rs2_matches;
+    wire fetch_wait_for_bus;
+    wire fetch_wait_for_mem_read;
+    wire fetch_wait_for_mem_fence;
+    wire mem_wait_for_bus;
 
     assign rs1_matches = decode_rs1_unreg_in == decode_rd_in && decode_rs1_read_unreg_in;
     assign rs2_matches = decode_rs2_unreg_in == decode_rd_in && decode_rs2_read_unreg_in;
