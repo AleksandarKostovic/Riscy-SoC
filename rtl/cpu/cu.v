@@ -1,3 +1,10 @@
+`include "alu.v"
+`include "csrs.v"
+`include "branch.v"
+`include "imm.v"
+`include "mem.v"
+`include "opcodes.vh"
+
 module control_unit (
 
     input [63:0] instr_in,
