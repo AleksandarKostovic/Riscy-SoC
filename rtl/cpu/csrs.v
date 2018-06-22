@@ -146,7 +146,7 @@
                     
 `define MISA_VALUE 64'b0101_00000000_0000000010000000000000000000000000100000000000000000
 
-module _csrs (
+module csrs (
     input clk,
     input stall_in,
 
