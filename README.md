@@ -5,4 +5,4 @@ The core uses 64 bit instrustions and is fully compatible with both regular and 
 
 This is a re-work of the [Icicle](https://github.com/grahamedgecombe/icicle) CPU, so that it supports 64 bit version, features updated control and status registers(CSRs) and works with open-source tools like APIO.
 
-It is going to be tested on TinyFPGA BX.
+It is going to be tested on TinyFPGA Bx board.
