@@ -45,14 +45,14 @@ module control_unit (
         mem_read_out = 0;
         mem_write_out = 0;
         mem_width_out = 4'bx;
-        mem_zero_extend_out = 2'bx;
+        mem_zero_extend_out = 1'bx;
         mem_fence_out = 0;
         csr_read_out = 0;
         csr_write_out = 0;
         csr_write_op_out = 4'bx;
-        csr_src_out = 2'bx;
+        csr_src_out = 1'bx;
         branch_op_out = `BRANCH_OP_NEVER;
-        branch_pc_src_out = 2'bx;
+        branch_pc_src_out = 1'bx;
         rd_write_out = 0;
     case (instr_in)
             `INSTR_LUI: begin
