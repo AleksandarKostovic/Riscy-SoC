@@ -54,7 +54,7 @@ module control_unit (
         branch_op_out = `BRANCH_OP_NEVER;
         branch_pc_src_out = 2'bx;
         rd_write_out = 0;
-    casez (instr_in)
+    case (instr_in)
             `INSTR_LUI: begin
                 valid_out = 1;
                 imm_out = `IMM_U;
