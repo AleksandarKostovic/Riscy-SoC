@@ -29,9 +29,9 @@ module alu (
     input [63:0] rs2_value_in,
     input [63:0] imm_value_in,
 
-    output wire non_zero_out,
+    output reg non_zero_out,
 
-    output wire [63:0] result_out
+    output reg [63:0] result_out
 );
     wire [63:0] src1;
     wire [63:0] src2;
