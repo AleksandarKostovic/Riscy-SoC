@@ -161,7 +161,7 @@ module csrs (
     input [63:0] rs1_value_in,
     input [63:0] imm_value_in,
 
-    output wire [63:0] read_value_out,
+    output reg [63:0] read_value_out,
     output wire [63:0] cycle_out
 );
     wire [63:0] write_value;
