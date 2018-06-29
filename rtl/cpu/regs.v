@@ -12,8 +12,8 @@ module regs (
 
     input [63:0] rd_value_in,
 
-    output wire [63:0] rs1_value_out,
-    output wire [63:0] rs2_value_out
+    output reg [63:0] rs1_value_out,
+    output reg [63:0] rs2_value_out
 );
     reg [63:0] regs [63:0];
 
