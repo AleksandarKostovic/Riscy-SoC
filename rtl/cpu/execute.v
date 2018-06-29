@@ -61,7 +61,7 @@ module execute (
     output reg [63:0] rs2_value_out,
     output reg [63:0] branch_pc_out,
 
-    output reg [127:0] cycle_out
+    output reg [63:0] cycle_out
 );
     reg [63:0] rs1_value;
     reg [63:0] rs2_value;
