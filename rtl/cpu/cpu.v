@@ -7,7 +7,7 @@
 `include "hazard.v"
 `include "mem.v"
 
-mmodule cpu (
+module cpu (
     input clk,
 
     output wire [63:0] instr_address_out,
