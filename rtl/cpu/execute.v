@@ -45,23 +45,23 @@ module execute (
 
     input [63:0] writeback_rd_value_in,
 
-    output wire branch_predicted_taken_out,
-    output wire valid_out,
-    output wire alu_non_zero_out,
-    output wire mem_read_out,
-    output wire mem_write_out,
-    output wire [2:0] mem_width_out,
-    output wire mem_zero_extend_out,
-    output wire mem_fence_out,
-    output wire [2:0] branch_op_out,
-    output wire [8:0] rd_out,
-    output wire rd_write_out,
+    output reg branch_predicted_taken_out,
+    output reg valid_out,
+    output reg alu_non_zero_out,
+    output reg mem_read_out,
+    output reg mem_write_out,
+    output reg [2:0] mem_width_out,
+    output reg mem_zero_extend_out,
+    output reg mem_fence_out,
+    output reg [2:0] branch_op_out,
+    output reg [8:0] rd_out,
+    output reg rd_write_out,
 
-    output wire [63:0] result_out,
-    output wire [63:0] rs2_value_out,
-    output wire [63:0] branch_pc_out,
+    output reg [63:0] result_out,
+    output reg [63:0] rs2_value_out,
+    output reg [63:0] branch_pc_out,
 
-    output wire [127:0] cycle_out
+    output reg [127:0] cycle_out
 );
     reg [63:0] rs1_value;
     reg [63:0] rs2_value;
