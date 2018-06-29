@@ -17,7 +17,8 @@ module branch_pc_mux (
     input [63:0] rs1_value_in,
     input [63:0] imm_value_in,
 
-    output wire [63:0] pc_out );
+    output wire [63:0] pc_out 
+);
     wire [63:0] pc;
 
     assign pc = (pc_src_in ? rs1_value_in : pc_in) + imm_value_in;
