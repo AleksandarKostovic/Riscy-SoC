@@ -14,7 +14,7 @@ module imm_mux (
 
     input [63:0] instr_in,
 
-    output wire [63:0] imm_value_out
+    output reg [63:0] imm_value_out
 );
     wire sign;
 
