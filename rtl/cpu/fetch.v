@@ -1,4 +1,4 @@
-`include "opcodes.v"
+`include "opcodes.vh"
 
 module fetch (
     input clk,
