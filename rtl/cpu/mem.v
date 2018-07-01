@@ -30,20 +30,20 @@ module mem (
 
     input [63:0] data_read_value_in,
 
-    output wire valid_out,
-    output wire branch_mispredicted_out,
-    output wire [8:0] rd_out,
-    output wire rd_write_out,
+    output reg valid_out,
+    output reg branch_mispredicted_out,
+    output reg [8:0] rd_out,
+    output reg rd_write_out,
 
-    output wire data_read_out,
+    output reg data_read_out,
     output wire data_write_out,
-    output wire [7:0] data_write_mask_out,
+    output reg [7:0] data_write_mask_out,
 
-    output wire [63:0] rd_value_out,
+    output reg [63:0] rd_value_out,
     output wire [63:0] branch_pc_out,
 
     output wire [63:0] data_address_out,
-    output wire [63:0] data_write_value_out
+    output reg [63:0] data_write_value_out
 );
     branch_unit branch_unit (
         .predicted_taken_in(branch_predicted_taken_in),
