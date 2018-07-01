@@ -9,9 +9,9 @@ module fetch (
     input [63:0] instr_read_value_in,
 
     output wire instr_read_out,
-    output wire branch_predicted_taken_out,
-    output wire [63:0] pc_out,
-    output wire [63:0] instr_out,
+    output reg branch_predicted_taken_out,
+    output reg [63:0] pc_out,
+    output reg [63:0] instr_out,
     output wire [63:0] instr_address_out
 );
     reg [63:0] next_pc;
