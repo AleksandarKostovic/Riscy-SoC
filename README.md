@@ -11,7 +11,10 @@ You can easly build it using yosys synthesis tool the following way:
 
 ```
 yosys
+
 #read_verilog top.v
+
 synth_ice40 -abc2 -top top -blif top.blif
+
 ```
 After you have created a bitstream for iCE40 FPGA, you can use whatever the bootloader/programmer you have for your FPGA board.
