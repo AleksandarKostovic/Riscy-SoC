@@ -7,6 +7,8 @@ This is a re-work of the [Icicle](https://github.com/grahamedgecombe/icicle) CPU
 
 ## How to build
 
+This is made for Lattice iCE 40 family of FPGAs
+
 You can easly build it using yosys synthesis tool the following way:
 
 ```
