@@ -19,4 +19,4 @@ top.v
 # generic synthesis
 synth -top top -blif top.blif
 ```
-After you have created a bitstream for iCE40 FPGA, you can use whatever the bootloader/programmer you have for your FPGA board.
+After you have created a bitstream for FPGA, you can use whatever the bootloader/programmer you have for your FPGA board.
