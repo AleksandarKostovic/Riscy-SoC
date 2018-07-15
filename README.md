@@ -12,7 +12,7 @@ You can easly build it using yosys synthesis tool the following way:
 
 ```
 https://github.com/AleksandarKostovic/Riscy-SoC.git
-cd rtl/cpu
+cd Riscy-SoC/rtl/cpu
 
 yosys
 
