@@ -11,6 +11,9 @@ This is a re-work of the [Icicle](https://github.com/grahamedgecombe/icicle) CPU
 You can easly build it using yosys synthesis tool the following way:
 
 ```
+https://github.com/AleksandarKostovic/Riscy-SoC.git
+cd rtl/cpu
+
 yosys
 
 #read_verilog
