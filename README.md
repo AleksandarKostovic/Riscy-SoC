@@ -8,7 +8,7 @@ This is a re-work of the [Icicle](https://github.com/grahamedgecombe/icicle) CPU
 ## How to build
 
 
-You can easly build it using yosys synthesis tool the following way:
+You can easly build it for Lattice iCE 40 FPGA using yosys synthesis tool the following way:
 
 ```
 https://github.com/AleksandarKostovic/Riscy-SoC.git
@@ -19,7 +19,6 @@ yosys
 #read_verilog
 top.v
 
-# generic synthesis
-synth -top top -blif top.blif
+synth_ice40 -top top -blif top.blif
 ```
 After you have created a bitstream for FPGA, you can use whatever the bootloader/programmer you have for your FPGA board.
