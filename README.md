@@ -3,6 +3,8 @@ Riscy-SoC is SoC based on RISC-V CPU core, previously designed in SystemVerilog,
 
 This is a re-work of the [Icicle](https://github.com/grahamedgecombe/icicle) CPU, so that it supports 64 bit version and works with open-source tools like APIO.
 
+# About the core
+
 ## How to build
 
 
