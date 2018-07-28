@@ -11,7 +11,7 @@ It has shared instruction and data memory (which is 8KiB).
 ## How to build
 
 
-You can easly build it for Lattice iCE 40 family of FPGA's using yosys synthesisin the tool the following way:
+You can easly build it for Lattice iCE 40 family of FPGA's using yosys synthesis in the tool the following way:
 
 ```
 https://github.com/AleksandarKostovic/Riscy-SoC.git
