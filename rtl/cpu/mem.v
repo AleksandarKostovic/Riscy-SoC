@@ -103,7 +103,9 @@ module mem (
                     data_write_mask_out = 8'bx;
                 end
             endcase
-        end else begin
+        end
+       
+	else begin
             data_write_value_out = 64'bx;
             data_write_mask_out = 8'b0;
         end
