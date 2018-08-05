@@ -7,7 +7,6 @@ This is a re-work of the [Icicle](https://github.com/grahamedgecombe/icicle) CPU
 The RISC-V core is RV64I compatible CPU with classic RISC 5-stage pipeline.
 
 It has shared instruction and data memory (which is 8KiB).
-
 ## How to build
 
 
