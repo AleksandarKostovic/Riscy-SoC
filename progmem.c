@@ -31,7 +31,7 @@ int main() {
     LEDS = 0xAA;
 
     for (;;) {
-        uart_puts("Hello, world!\r\n");
+        uart_puts("Hello everyone!\r\n");
 
         uint32_t start = rdcycle();
         while ((rdcycle() - start) <= FREQ);
