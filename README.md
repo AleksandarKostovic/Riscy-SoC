@@ -17,9 +17,7 @@ git clone https://github.com/AleksandarKostovic/Riscy-SoC.git
 cd Riscy-SoC/rtl/cpu
 
 yosys
-
-#read_verilog
-top.v
+read_verilog top.v
 
 synth_ice40 -top top -blif top.blif
 ```
