@@ -140,7 +140,7 @@
 `define CSR_WRITE_OP_RS 2'b01
 `define CSR_WRITE_OP_RC 2'b10
 
-`define SR_SRC_IMM 1'b0
+`define CSR_SRC_IMM 1'b0
 `define CSR_SRC_REG 1'b1
 
                     
