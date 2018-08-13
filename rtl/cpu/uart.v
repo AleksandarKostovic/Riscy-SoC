@@ -52,7 +52,6 @@ module uart (
                 `UART_REG_DATA: begin
                     read_value_out = {{48{~rx_read_ready}}, rx_read_ready ? rx_read_buf : 16'b0};
                 end
-                end
             endcase
         end else begin
             read_value_out = 0;
@@ -98,7 +97,6 @@ module uart (
                             rx_read_ready <= 1;
                             rx_read_buf <= rx_buf;
                         end
-                    end
                     end
                 endcase
             end

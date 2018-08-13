@@ -100,6 +100,7 @@ module mem (
                         end
                     endcase
                 end
+                default: begin
                     data_write_mask_out = 8'bx;
                 end
             endcase
@@ -128,7 +129,6 @@ module mem (
                         4'b1010: mem_read_value = {{48{zero_extend_in ? 2'b00 : data_read_value_in[47]}}, data_read_value_in[47:32]};
                         4'b1111: mem_read_value = {{48{zero_extend_in ? 2'b00 : data_read_value_in[63]}}, data_read_value_in[63:48]};
                     endcase
-                end
                 end
             endcase
         end else begin

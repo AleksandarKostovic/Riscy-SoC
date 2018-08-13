@@ -12,16 +12,16 @@ module top (
 `endif
 
 `ifdef FLASH
-    output logic flash_clk,
-    output logic flash_csn,
+    output flash_clk,
+    output flash_csn,
     inout flash_io0,
     inout flash_io1,
 `endif
 
-    output logic [15:0] leds,
+    output [15:0] leds,
 
     input uart_rx,
-    output logic uart_tx
+    output uart_tx
 );
 
 `ifdef FLASH
