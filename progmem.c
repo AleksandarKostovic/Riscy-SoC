@@ -10,6 +10,8 @@
 #define UART_STATUS_TX_READY 0x1
 #define UART_STATUS_RX_READY 0x2
 
+#define FREQ 10000000
+
 #define BAUD_RATE 9600
 
 static void uart_puts(const char *str) {
