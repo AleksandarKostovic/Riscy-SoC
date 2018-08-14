@@ -21,4 +21,4 @@ read_verilog top.v
 
 synth_ice40 -top top -blif top.blif
 ```
-After you have created a bitstream for FPGA, you can use whatever the bootloader/programmer you have for your FPGA board.
+After you have created a bitstream for FPGA, you must use place and route tool to wire the design to FPGA. Project [IceStorm](http://www.clifford.at/icestorm/) is good for that (the Apache PnR in it) or you can also use [Next PnR](https://github.com/YosysHQ/nextpnr). In the end you can use whatever bootloader/programmer you have for your FPGA board.
