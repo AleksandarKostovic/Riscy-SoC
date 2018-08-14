@@ -1,4 +1,4 @@
-`ifndef UART
+`ifdef UART
 `define UART
 
 `define UART_REG_CLK_DIV 4'b0000
