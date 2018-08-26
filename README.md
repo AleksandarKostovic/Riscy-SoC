@@ -9,7 +9,7 @@ The RISC-V core is RV64I compatible CPU with classic RISC 5-stage pipeline.
 It has shared instruction and data memory (which is 8KiB).
 ## How to build
 
-Prerequisite: [Yosys](http://www.clifford.at/yosys/), [IceStorm](http://www.clifford.at/icestorm/) and [NextPnR](https://github.com/YosysHQ/nextpnr)
+Prerequisite: [Yosys](http://www.clifford.at/yosys/), [IceStorm](http://www.clifford.at/icestorm/) and [NextPnR](https://github.com/YosysHQ/nextpnr).
 You can build it for Lattice iCE 40 family of FPGA's using yosys synthesis in the tool the following way:
 
 ```
