@@ -20,4 +20,9 @@ yosys -p 'synth_ice40 -top top -json top.json' top.v               # syntesize i
 nextpnr-ice40 --hx1k --json top.json --pcf top.pcf --asc top.asc   # run place and route
 icepack top.asc top.bin                                            # generate binary bitstream file
 ```
-After you have created a bitstream for FPGA, ran place and route, you can use whatever bootloader/programmer you have for your FPGA board.
+After you have created a bitstream for FPGA, ran place and route, you can use whatever bootloader/programmer you have for your FPGA board. If you use TinyFPGA, ICEbreaker or Arty-7, you can use [TinyProg](https://www.github.com/tinyfpga/TinyFPGA-Bootloader) to upload the bitstream.
+
+```
+tinyprog -p top.bin
+```
+
