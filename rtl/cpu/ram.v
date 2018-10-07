@@ -12,9 +12,6 @@ module ram (
     reg [63:0] mem [4095:0];
     reg [63:0] read_value;
 
-    initial
-        $readmemh("progmem_syn.hex", mem);
-
     assign read_value_out = sel_in ? read_value : 0;
 
     always @(negedge clk) begin
