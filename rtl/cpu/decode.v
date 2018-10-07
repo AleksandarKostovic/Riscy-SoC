@@ -20,9 +20,9 @@ module decode (
 
     input [63:0] rd_value_in,
 
-    output reg [8:0] rs1_unreg_out,
+    output wire [8:0] rs1_unreg_out,
     output wire rs1_read_unreg_out,
-    output reg [8:0] rs2_unreg_out,
+    output wire [8:0] rs2_unreg_out,
     output wire rs2_read_unreg_out,
     output wire mem_fence_unreg_out,
 
