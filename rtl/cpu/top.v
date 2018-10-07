@@ -144,7 +144,6 @@ module top (
         endcase
     end
 
-    reg [63:0] ram_read_value;
 
     ram ram (
         .clk(pll_clk),
