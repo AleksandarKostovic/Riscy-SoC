@@ -54,3 +54,5 @@ module bus_arbiter (
         end
     end
 endmodule
+
+`endif

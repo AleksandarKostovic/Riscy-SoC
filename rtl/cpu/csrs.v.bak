@@ -182,7 +182,7 @@ module csrs (
     reg mip_meip;
     reg mip_mtip;
     reg mip_msip;
-    reg [63:0] cycle;
+    wire [63:0] cycle;
     reg [63:0] instret;
 
     assign write_value = src_in ? rs1_value_in : imm_value_in;

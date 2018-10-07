@@ -119,7 +119,7 @@ module mem (
                 `MEM_WIDTH_HALF: begin
                     case (result_in[0])
                         2'b00: mem_read_value = {{32{zero_extend_in ? 2'b00 : data_read_value_in[31]}}, data_read_value_in[15:0]};
-                        2'b11: mem_read_value = {{32{zero_extend_in ? 2'b00 : data_read_value_in[64]}}, data_read_value_in[64:32]};
+                        2'b11: mem_read_value = {{32{zero_extend_in ? 2'b00 : data_read_value_in[31]}}, data_read_value_in[64:32]};
                     endcase
                 end
                 `MEM_WIDTH_BYTE: begin

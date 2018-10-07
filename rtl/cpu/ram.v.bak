@@ -10,7 +10,7 @@ module ram (
     input [63:0] write_value_in
 );
     reg [63:0] mem [4095:0];
-    reg [63:0] read_value;
+    wire [63:0] read_value;
 
     initial
         $readmemh("progmem_syn.hex", mem);

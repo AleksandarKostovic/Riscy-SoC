@@ -90,5 +90,3 @@ module timer (
         end
     end
 endmodule
-
-`endif
