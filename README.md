@@ -16,7 +16,7 @@ You can build it for Lattice iCE 40 family of FPGA's using yosys synthesis in th
 git clone https://github.com/AleksandarKostovic/Riscy-SoC.git
 cd Riscy-SoC/rtl/cpu
 
-yosys -p 'synth_ice40 -top top -json top.json' top.v               # syntesize into top.json
+yosys -p 'synth_ice40 -top top -json top.json' top.v               # syntesize into top.json | currently fails but will be fixed
 nextpnr-ice40 --hx1k --json top.json --pcf top.pcf --asc top.asc   # run place and route
 icepack top.asc top.bin                                            # generate binary bitstream file
 ```
