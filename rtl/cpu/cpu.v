@@ -102,7 +102,7 @@ module cpu (
 
     reg [63:0] mem_branch_pc;
 
-    cpu_hazard_unit hazard_unit (
+    hazard_unit hazard_unit (
 
         .decode_rs1_unreg_in(decode_rs1_unreg),
         .decode_rs1_read_unreg_in(decode_rs1_read_unreg),
@@ -139,7 +139,7 @@ module cpu (
         .mem_flush_out(mem_flush)
     );
 
-    cpu_fetch fetch (
+    fetch fetch (
         .clk(clk),
 
         .stall_in(fetch_stall),
@@ -161,7 +161,7 @@ module cpu (
         .instr_address_out(instr_address_out)
     );
 
-    cpu_decode decode (
+    decode decode (
         .clk(clk),
 
         .stall_in(decode_stall),
@@ -212,7 +212,7 @@ module cpu (
         .csr_out(decode_csr)
     );
 
-    cpu_execute execute (
+    execute execute (
         .clk(clk),
 
         .stall_in(execute_stall),
@@ -273,7 +273,7 @@ module cpu (
         .cycle_out(cycle_out)
     );
 
-    cpu_mem mem (
+    mem mem (
         .clk(clk),
 
         .stall_in(mem_stall),
